@@ -1,10 +1,34 @@
 package org.launchcode.studio7;
 
-public class CD {
+import java.io.ByteArrayOutputStream;
+import java.util.Map;
 
-    // TODO: Implement your custom interface.
+public class CD extends OpticalDisk implements OpticalDiscInterface {
+    protected double capacity = 700.0; // MB
+    protected double dataTransferRate = 1.5; // MB / sec;
+    protected double pitLength = .83; // Microns
+    protected int spinRate = 52;
+    protected boolean isSpinning = false;
+    protected Map<String, String> initialInfo;
+    protected ByteArrayOutputStream data;
 
-    // TODO: Determine which fields, methods, and constructors can be extended from the base class and which ones
-    //  need to be declared separately.
+    public CD(Map<String, String> initialInfo) {
+        super();
+        this.initialInfo = initialInfo;
+    }
 
+    @Override
+    public ByteArrayOutputStream getData() {
+        return this.data;
+    }
+
+    @Override
+    public void writeData(ByteArrayOutputStream data) {
+        this.data = data;
+    }
+
+    @Override
+    public Map<String, String> getInfo() {
+        return this.initialInfo;
+    }
 }
